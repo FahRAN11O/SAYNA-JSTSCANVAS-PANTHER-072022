@@ -1,0 +1,310 @@
+/* Couleurs */
+:root {
+    --white-color: #ffffff;
+    --purple-color: #9E91B7;
+    --purple-color2: #3D2DA6;
+    --blue-color: #07338C;
+    --blue-color2: #021740;
+    --pink-color: #F2CEF2;
+    --pink-color2: #DF99F2;
+    --black-color: #000;
+}
+
+/************* Contacts et lignes verticales ****************/
+.left{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 1vw;
+    position: absolute;
+    top:  0;
+    left: 3vw;
+    display: grid;
+    position: fixed;
+}
+
+.vertical-line1 {
+    border-left: 3px solid var(--purple-color);
+    min-height: 29vw;
+}
+
+.vertical-line2 {
+    border-left: 3px solid var(--purple-color); 
+    height: 19.1vw;
+}
+
+.vertical-icon {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-left: 14px;
+}
+
+.vertical-icon .icons {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    list-style-type: none;
+    margin-left: -7px;
+}
+
+.vertical-icon .icons img {
+    width: 16px;
+}
+
+.icons li:hover {
+    filter: brightness(0) saturate(100%) invert(100%) grayscale(100%) contrast(200%);
+}
+
+/************************ PREMIERE SECTION *****************************/
+.first-section {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10% 12%;
+    height: 30vw;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.bp h1 {
+    line-height: 0.5;
+}
+
+.bp h2 {
+    line-height: 3;
+}
+
+.first-section p {
+    width: 32vw;
+    text-align: justify;
+}
+
+.first-section a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.first-section img {
+    width: 62.5vw;
+    margin: -15% auto auto -5%;
+}
+
+/************************ DEUXIEME SECTION *****************************/
+.second-section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.7fr 8fr;
+}
+
+.second-section .persona {
+    display: grid;
+    grid-template-columns: 4fr 4fr 3fr 4fr 2fr;
+    background-color: var(--blue-color2);
+    height: 18vw;
+    width: 100%;
+    padding-left: 2%;
+}
+
+.second-section .persona .divImg1 img {
+    width: 100%;
+    margin-top: -15%;
+}
+
+.second-section .persona .div1 {
+    padding: 10% 5% 0 5%;
+}
+
+.second-section .persona .divImg2 img {
+    width: 100%;
+}
+
+.second-section .persona .div2 {
+    padding: 10% 5% 0 5%;
+}
+
+.second-section .persona .divImg3 {
+    position: relative;
+}
+
+.second-section .persona .divImg3 button {
+    background-color: var(--blue-color2);
+    padding: 10% 15%;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    right: 25%;
+    top: 28%;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+}
+
+.second-section .persona .divImg3 img {
+    width: 149%;
+}
+
+/* animation du slider */
+/* #myDiv {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+} */
+  
+
+/************************ TROISIEME SECTION *****************************/
+.third-section {
+    padding: 12% 10% 5% 8%;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 50vw 8vw 25vw 3vw;
+}
+
+/* partie gauche */
+.part-left {
+    padding-left: 9%;
+}
+
+.part-left span {
+    font-size: 0.9em;
+}
+
+/* partie droite */
+.part-right {
+    display: grid;
+    grid-column:  3/4;
+    margin-top: 35%;
+}
+
+.part-right .tchalla {
+    background-color: var(--white-color);
+    opacity: 0.9;
+    border-radius: 1em;
+    grid-row: 2;
+    width: 25vw;
+    height: 45vw;
+    text-align: center;
+    color: var(--blue-color2);
+    box-shadow: 0px 4px 8px 0px var(--black-color);
+}
+
+.part-right .tchalla img {
+    margin-top: -60%;
+    width: 80%;
+}
+
+.part-right .tchalla .btn-group {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    text-align: center;
+}
+
+.part-right .tchalla .btn-group button {
+    background-color: var(--purple-color2);
+    color: var(--white-color);
+    border-radius: 3px;
+    padding: 2% 4%;
+    border: none;
+    font-size: 0.75em;
+    margin: 5% 0;
+}
+
+.part-right .tchalla .description {
+    padding: 0 10%;
+    text-align: left;
+    line-height: 2;
+}
+
+.part-right .pantherhome6 {
+    grid-row: 4;
+    display: flex;
+    align-items: center;
+}
+
+.part-right .pantherhome6 img {
+    width: 26vw;
+}
+
+/***************** QUATRIEME SECTION (FORMULAIRE) *****************/
+.fourth-section{
+    background-image: url(../images/Accueil/Pantherhome7.png);
+    background-size: 100vw;
+    padding-top: 10%;
+    padding-bottom: 2.5%;
+}
+
+.formulaire {
+    width: 50vw;
+    height: 36vw;
+    background: linear-gradient(180deg, #ffffff 20%, #ffffff27 80.43%);
+    border-radius: 25%;
+    padding: 5%;
+    line-height: 1.8;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.formulaire p {
+    color: var(--blue-color2);
+    font-size: 1em;
+}
+
+.formulaire h2 {
+    font-family: cantarell;
+    color: var(--blue-color2);
+    font-size: 2em;
+    margin-bottom: 5%;
+    font-weight: bolder;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+form input, textarea {
+    width: 80%;
+    height: 3vw;
+    border-radius: 3em;
+    border: 1px solid var(--blue-color2);
+    background: transparent;
+    margin: 0 auto;
+    resize: none;
+    padding-left: 5%;
+    color: var(--black-color);
+    font-size: 1em;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--blue-color2); 
+    font-family: cantarell;
+    font-size: 1vw;
+}
+
+form button{
+    width: 10vw;
+    padding: 2% 2.5%;
+    font-size: 0.8em;
+    border-radius: 3em;
+    background-color: var(--pink-color);
+    border: none;
+    margin: 0 auto;
+    color: var(--blue-color2);
+    font-family: cantarell;
+    font-weight: bold;
+}
+
+button[type='submit']:hover {
+    box-shadow: 0px 0px 4px 4px var(--blue-color2);
+    cursor: pointer;
+}
+
+/***************** CINQUIEME SECTION (ROND BLEU) *****************/
+.fifth-section {
+    background: radial-gradient(126.67% 350.28% at -21.35% 0%, #11213F 0%, #0B0B0B 39.1%, rgba(2, 23, 64,
+    0.837641) 94.57%, rgba(2, 23, 64, 0) 100%);
+    margin-bottom: -12%;
+    height: 12vw;
+    padding: 2% 0 0 85%;
+}
+

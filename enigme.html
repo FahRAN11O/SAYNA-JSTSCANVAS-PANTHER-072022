@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigme</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/enigme.css">
+</head>
+<body>
+    <!-------------------------En-tête------------------------------>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/images/All pages/footer2.png" alt="logos">
+            </div>
+            <ul class="nav">
+                <li class="menu">
+                    <a href="index.html">
+                    ACCUEIL
+                    </a>
+                </li>
+                <li>
+                    <a href="wakanda.html">
+                    WAKANDA
+                    </a>
+                </li>
+                <li>
+                    <a class="active" href="enigme.html">
+                    ENIGME
+                    </a>
+                </li>
+            </ul>
+        </nav>      
+    </header>
+
+    <!-------------------- contenu principal ------------------------->
+    <main>
+        <!------------------- Première section ---------------->
+        <section class="first-section">
+            <div class="left">
+                <img src="assets/images/Enigme/Pantherenigme1.png" alt="Pantherenigme1">
+            </div>
+            <div class="right">
+                <h1>Releve le defi <br>des dora milaje</h1>
+                <div class="pantherenigme2">
+                    <img src="assets/images/Enigme/Pantherenigme2.png" alt="Pantherenigme2">
+                    <div class="pantherenigme2-text">
+                        <p>Les Dora Milaje sont de farouches guerrières d’élite. Elles constituent la garde 
+                            rapprochée du Roi en personne et ont de nombreuses occasions de lui sauver la 
+                            vie. Leur Générale, Okoyé est également la dirigeante des forces armées et des 
+                            renseignements wakandais. <br><br>
+                            
+                            La réussite de cette évaluation ne dépend pas de la chance mais bel et bien de 
+                            l’entrainement que tu as suivi jusqu’ici ainsi que de ta détermination. Relève ce défi et 
+                            montre nous que tu es capable de porter les valeurs du Black Panther et du Wakanda!</p>
+                        <img src="assets/images/Enigme/Pantherenigme4.png" alt="" id="p4">
+                    </div>
+                </div>
+                <div class="line">
+                    <img src="assets/images/Enigme/Pantherenigme3.png" alt="Pantherenigme3">
+                </div>
+            </div>
+        </section>
+
+        <!------------------- Deuxième section ---------------->
+        <section class="second-section">
+            <div class="words">
+                <h2> ENIGME NUMERO <span id="numero-enigme"></span></h2>
+                <p id="description-enigme"></p>
+                <h3 id="contenu-enigme"></h3>
+            </div>
+            <!-- partie gauche -->
+            <div class="left2">
+                
+                <div class="formulaire">
+                    <p class="p1">Alors, as tu la réponse </p>
+                    <form action="" id="result">
+                        <input type="text" name="response" id="response" placeholder="Réponse" required>
+                        <button type="submit" id="send">ENVOYER</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- partie droite -->
+            <div class="right2">
+                <img src="assets/images/Enigme/Pantherenigme2.png" alt="Pantherenigme2">
+                <div class="alphabet">
+                    <p class="p1" id="note"></p>
+                    <p class="p2" id="contenu-note"><span>A</span> = A ; <span>B</span> = b ; <span>C</span> = c ; <span>D</span> = d ; <span>E</span> = e ; <span>F</span> = f ; <span>G</span> = g ; <span>H</span> = h ; <span>I</span> = i ; <span>J</span> = j ; 
+
+                        <span>K</span> = k ; <span>L</span> = l ; <span>M</span> = m ; <span>N</span> = n ; <span>O</span> = o ; <span>P</span> = p ; <span>Q</span> = q ; <span>R</span> = r ; <span>S</span> = s ; <span>T</span> = t ;
+                        
+                        <span>U</span> = u ; <span>W</span> = w ; <span>X</span> = x ; <span>Y</span> = y ; <span>Z</span> = z </p>
+                </div>
+                
+                <!--<div class="pantherenigme2-text2">
+                    <p>Le savais tu ? </p>
+                    <p>Plusieurs sources s’entendent pour dire que la lettre la plus utilisée en français est 
+                        la lettre E. En pourcentage de fréquence, la lettre est utilisée à 14% dans une 
+                        phrase. Et si tu regardais quel symbole revient le plus souvent ?</p>
+                </div>-->
+            </div>
+        </section>
+    </main>
+
+    <!-------------------- Pied de page ------------------------------------>
+    <footer>
+        <div class="footer-left">
+            <div class="img1">
+                <img src="assets/images/All pages/footer1.png" alt="">
+                <div class="img2" >
+                    <img src="assets/images/All pages/footer2.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div>
+                <h4>PAGES</h4>
+                <p>A propos</p>
+                <p>Wakanda</p>
+            </div>
+            <div>
+                <h4>RETROUVEZ NOUS</h4>
+                <ul>
+                    <li><a href="http://www.marvel-cineverse.fr/pages/mcu/encyclopedie/personnages/black-panther.html"><img src="assets/images/All pages/footer3.png" alt=""></a></li>
+                    <li><a href="http://www.marvel-cineverse.fr/pages/mcu/encyclopedie/personnages/black-panther.html"><img src="assets/images/All pages/footer4.png" alt=""></a></li>
+                    <li><a href="http://www.marvel-cineverse.fr/pages/mcu/encyclopedie/personnages/black-panther.html"><img src="assets/images/All pages/footer5.png" alt=""></a></li>
+                    <li><a href="http://www.marvel-cineverse.fr/pages/mcu/encyclopedie/personnages/black-panther.html"><img src="assets/images/All pages/footer6.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p> 2022 Tous droits réservés <span style="border-radius: 100%; background-color: white; font-size: 0.3vw;">.....</span> Politique de confidentialité <span style="border-radius: 100%; background-color: white; font-size: 0.3vw;">.....</span> Conditions d’utilisation</p>
+            </div>
+        </div>
+    </footer>   
+
+    <!-- modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal()">&times;</span>
+            <h3 id="titre-popup">TON INITIATION EST TERMINEE!</h3>
+            <div>
+                <button>REVENIR A L'ACCUEIL</button>
+            </div>
+            <div>
+                <div><img src="" alt=""></div>
+                <div>
+                    <p>COMING SOON...</p>
+                    <p>00:00: <span id="timeout"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/enigme.js"></script>
+</body>
+</html>
