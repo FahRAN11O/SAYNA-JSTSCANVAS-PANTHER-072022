@@ -145,7 +145,17 @@ input::placeholder {
     font-family: cantarell;
 }
 
-form button{
+#btn-retour{
+    width: 20vw;
+    cursor: pointer;
+}
+
+#btn-retour:hover{
+    box-shadow: 0px 0px 4px 4px var(--pink-color);
+    cursor: pointer;
+}
+
+form button, #btn-retour{
     width: 10vw;
     padding: 2.5% 2.5%;
     border-radius: 38px;
