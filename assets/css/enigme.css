@@ -112,6 +112,12 @@ h1 {
     font-size: 1em;
 }
 
+#enigme-normal {
+    font-family: cantarell;
+    color: var(--white-color);
+    font-size: 1vw;
+}
+
 .alphabet span {
     font-family: cantarell;
     font-size: 1em;

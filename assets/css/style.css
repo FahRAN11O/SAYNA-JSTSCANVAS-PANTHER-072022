@@ -41,7 +41,13 @@ html {
     font-size: 1vw;
 }
 
-body {
+#enigme-normal {
+    font-family: cantarell;
+    color: var(--white-color);
+    font-size: 1vw;
+}
+
+body{
     background-image: url('../images/All pages/arrière_plan.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -57,7 +63,7 @@ h1 {
     font-size: 3.2em;
 }
 
-h2, #numero-enigme {
+h2, #numero-enigmes {
     font-family: beyno;
     color: var(--purple-color);
     font-size: 1.5em;

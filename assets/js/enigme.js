@@ -25,7 +25,7 @@
     let enigmes= [
       {
         "numero": 1,
-        "description": "Prouve ton talent d'espion et déchiffre cette réplique d’Okoyé écrite en Wakandais,et apprend par la même occasion la première valeur d’une Dora Milaje ",
+        "description": "Prouve ton talent d'espion et déchiffre cette réplique d’Okoyé écrite en Wakandais,<br> et apprend par la même occasion la première valeur d’une Dora Milaje ",
         "titre_note":"Voici la transicription de l’alphabet",
         "note": "<span>A</span> = A ; <span>B</span> = b ; <span>C</span> = c ; <span>D</span> = d ; <span>E</span> = e ; <span>F</span> = f ; <span>G</span> = g ; <span>H</span> = h ; <span>I</span> = i ; <span>J</span> = j ; <span>K</span> = k ; <span>L</span> = l ; <span>M</span> = m ; <span>N</span> = n ; <span>O</span> = o ; <span>P</span> = p ; <span>Q</span> = q ; <span>R</span> = r ; <span>S</span> = s ; <span>T</span> = t ;<span>U</span> = u ; <span>W</span> = w ; <span>X</span> = x ; <span>Y</span> = y ; <span>Z</span> = z",
         "enigme": "\"SI JE SUIS FIDELE C’EST <br>A CE TRONE PEU IMPORTE QUI<br> MONTE DESSU\""
@@ -35,27 +35,31 @@
         "description": "Une anecdote intéressante est écrite juste en dessous mais elle est codée par un code césar également appelé code de “chiffrement par décalage”. L’alphabet a été décalé, trouve la clé de chiffrement qui te permettrait de retrouver les lettres et retranscris la phrase :",
         "titre_note":"Le savais tu ?",
         "note":"Plusieurs sources s’entendent pour dire que la lettre la plus utilisée en français est la lettre E. En pourcentage de fréquence, la lettre est utilisée à 14% dans une phrase. Et si tu regardais quel symbole revient le plus souvent pour en déduire son décalage dans l’alphabet ?",
-        "enigme": "Tm nqtu lmjcbm i Wikstivl mv Kitqnwzvqm. Qt a'ioqb lm ti dqttm lwvb mab wzqoqviqzm Zgiv Kwwotmz mb moitmumvb ti dqttm ycq i dc viqbzm tm uwcdmumvb xwtqbqycm lma jtiks xivbpmza"
+        "enigme": "<p id=\"enigme-normal\">Tm nqtu lmjcbm i Wikstivl mv Kitqnwzvqm. Qt a'ioqb lm ti dqttm lwvb mab wzqoqviqzm Zgiv Kwwotmz mb moitmumvb ti dqttm ycq i dc viqbzm tm uwcdmumvb xwtqbqycm lma jtiks xivbpmza </p>"
       },
       {
         "numero": 3,
         "description": "Lorsque T’Challa mange l’herbe en forme de coeur pour recevoir les pouvoirs du Black Panther, il voit son père afin de lui demander conseil afin de devenir un bon roi. Cette scène rappelle la même scène d’un certain film où un père dit à son fils de ne pas oublier qui il est et d’où il vient. Quel est ce film ?",
         "titre_note":"Le savais tu ?",
         "note":"Le philosophe Francis Bacon inventa en 1605 un alphabet bilitère, uniquement composé des deux lettres A et B. C'est en quelque sorte l'ancêtre du système binaire des ordinateurs actuels car toute lettre pouvait être construite avec un enchainement précis de ces deux lettres, tandis que le système binaire informatique utilise 0 et 1.",
-        "enigme": "01001100 01000101 00100000 01010010 01001111 01001001 00100000 01001100 01001001 01001111 01001110 00001101 00001010"
+        "enigme": " <p id=\"enigme-normal\" style=\"font-family: cantarell;\">01001100 01000101 00100000 01010010 01001111 01001001 00100000 01001100 01001001 01001111 01001110 00001101 00001010 </p>"
+      },
+      {
+        "numero":4
       }
     ]
 
 
-
-var numeroEnigme = $('#numero-enigme');
-var descriptionEnigme = $('#description-Enigme');
+let index = 1;
+var numeroEnigme = $('#numero-enigmes');
+var descriptionEnigme = $('#description-enigme');
 var contenuEnigme = $('#contenu-enigme');
 var noteEnigme = $('#note');
 var contenuNote = $('#contenu-note');
 
-numeroEnigme.html(enigmes[0].numero);
-descriptionEnigme.text(enigmes[0].enigme);
+numeroEnigme.text(enigmes[0].numero);
+descriptionEnigme.html(enigmes[0].description);
+contenuEnigme.html(enigmes[0].enigme);
 noteEnigme.text(enigmes[0].titre_note);
 contenuNote.html(enigmes[0].note);
 console.log(enigmes[0].numero);
@@ -125,31 +129,48 @@ function hideModal() {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       console.log("Response Premier"+$('#response').val().toLowerCase());
-        /*if(decodedMessage.toLowerCase() == $('#response').val().toLowerCase()){
-            console.log("DECODED:"+decodedMessage.toLowerCase());
-            console.log("Reponse:"+$('#response').val().toLowerCase());
-            console.log("MARINA");
-            $('#contenu-popup').text("marina");
-        }else{
-            console.log("DECODED:"+decodedMessage.toLowerCase());
-            console.log("Reponse:"+$('#response').val().toLowerCase());
-            $('#contenu-popup').text("diso");
-            console.log("DISO");
-        }*/
-
-      //modal.style.display = "block";
-      index = 40;
-      function timelapse(){
         
-        if(index>0){
-            $('#timeout').text(index-1); 
-            index = index-1;   
+
+        $('#enigme-normal').css('font-family','Arial,sans-serif');
+
+        resetInputs();
+       enigmeSuivant(index); 
+      function enigmeSuivant(index) {
+       
+        numeroEnigme.text(enigmes[index].numero);
+        descriptionEnigme.html(enigmes[index].description);
+        contenuEnigme.html(enigmes[index].enigme);
+        noteEnigme.text(enigmes[index].titre_note);
+        contenuNote.html(enigmes[index].note);
+        console.log(enigmes[index].numero);
+
+        
+        
+        if(index>2){
+            //inputs.blur();
+            numeroEnigme.text(enigmes[2].numero);
+            setInterval(timelapse, 1000);
+        }
+
+      }
+      index = index+1;
+
+      secTemps = 40;
+      function timelapse(){
+        modal.style.display = "block";
+        if(secTemps>0){
+            $('#timeout').text(secTemps-1); 
+            secTemps = secTemps-1;
+            if(secTemps<10){
+                $('#timeout').text("0"+secTemps);
+            }   
         }else{
+            window.location.href = "./index.html";
             console.log("END OF TIME");
             modal.style.display = "none";
         }
       }
-      setInterval(timelapse, 1000);
+      
 
 
     });
