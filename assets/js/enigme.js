@@ -35,7 +35,7 @@
         "description": "Une anecdote intéressante est écrite juste en dessous mais elle est codée par un code césar également appelé code de “chiffrement par décalage”. L’alphabet a été décalé, trouve la clé de chiffrement qui te permettrait de retrouver les lettres et retranscris la phrase :",
         "titre_note":"Le savais tu ?",
         "note":"<p id='enigme-normal'>Plusieurs sources s’entendent pour dire que la lettre la plus utilisée en français est la lettre E. En pourcentage de fréquence, la lettre est utilisée à 14% dans une phrase. Et si tu regardais quel symbole revient le plus souvent pour en déduire son décalage dans l’alphabet ?</p>",
-        "enigme": "<p id=\"enigme-normal\">Tm nqtu lmjcbm i Wikstivl mv Kitqnwzvqm. Qt a'ioqb lm ti dqttm lwvb mab wzqoqviqzm Zgiv Kwwotmz mb moitmumvb ti dqttm ycq i dc viqbzm tm uwcdmumvb xwtqbqycm lma jtiks xivbpmza </p>"
+        "enigme": "Tm nqtu lmjcbm i Wikstivl mv Kitqnwzvqm. Qt a'ioqb lm ti dqttm lwvb mab wzqoqviqzm Zgiv Kwwotmz mb moitmumvb ti dqttm ycq i dc viqbzm tm uwcdmumvb xwtqbqycm lma jtiks xivbpmza "
       },
       {
         "numero": 3,
@@ -79,6 +79,7 @@ send.addEventListener('click', () => {
 });
 
 
+//Decoder l'enigme numero 2 par un decalde de 8
 function decodeCesar(message, shift) {
     var decodedMessage = "";
     for (var i = 0; i < message.length; i++) {
@@ -96,6 +97,7 @@ function decodeCesar(message, shift) {
   }
   
   var message = enigmes[1].enigme;
+  //Decalage 8
   var shift = 8;
   
   var decodedMessage = decodeCesar(message, shift);
@@ -131,13 +133,16 @@ function hideModal() {
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
+      var valeurRep =$('#response').val().toLowerCase(); 
       console.log("Response Premier"+$('#response').val().toLowerCase());
-    var valeurRep =$('#response').val().toLowerCase();        
+           
 
         $('#enigme-normal').css('font-family','Arial,sans-serif');
 
-        resetInputs();
+        
        enigmeSuivant(index); 
+       
+       //Fonction pour changer le contenu d'enigme
       function enigmeSuivant(index) {
        
         numeroEnigme.text(enigmes[index].numero);
@@ -147,8 +152,15 @@ function hideModal() {
         contenuNote.html(enigmes[index].note);
         console.log(enigmes[index].numero);
 
+        if(index==1){
+            
+            contenuEnigme.html("<p id=\"enigme-normal\">"+enigmes[index].enigme+"</p>");
+        }
         
+    }
 
+        
+        //Si on est sur l'enigme numero1
         if(index==0){
             console.log("rep1="+reponse1.toLowerCase());
             if(valeurRep == reponse1.trim().toLowerCase()){
@@ -156,14 +168,14 @@ function hideModal() {
                 modal.style.display ='flex';
                 $('#titre-popup').text("Bravo! Votre réponse est correcte.");
                 //Boutton Enigme suivant
-                //onclick="window.location.href='index.html'";
                 boutonModal.innerHTML="Enigme suivante";
+
+                //evenenement correspondant avec le bouton
                 boutonModal.addEventListener('click',(event) => {
-                    
-                    
                     index = 1;
                     enigmeSuivant(index);
                     modal.style.display ='none';
+                    resetInputs();
                     
                 })
                 //Hide timeFig
@@ -182,13 +194,16 @@ function hideModal() {
                      index = index;
                      enigmeSuivant(index);
                      modal.style.display ='none';
+                     resetInputs();
                  });
-                 //Hide timeFig
+                 //Hide timeFig, cachéle logo de figme et le compte à rebours
                  timeFig.style.display="none";
             }
         }
+
+        //Si on est sur l'enigme 2
          if (index==1) {
-            if(valeurRep == decodedMessage.toLowerCase()){
+            if(valeurRep == decodedMessage.trim().toLowerCase()){
                 modal.style.display ='flex';
                 boutonModal.innerHTML="Enigme suivante";
                 //Reponse Correcte
@@ -198,12 +213,14 @@ function hideModal() {
                     
                     
                     index = 2;
-                    enigmeSuivant(index);
+                    enigmeSuivant(2);
                     modal.style.display ='none';
                 })
                 //Hide timeFig
                 timeFig.style.display="none";
             }else{
+                console.log("input rep2:"+valeurRep);
+                console.log("decod mes2:"+decodedMessage.trim().toLowerCase());
                 modal.style.display ='flex';
                 boutonModal.innerHTML="Refaire l'énigme";
                  //reponse incorrecte
@@ -215,6 +232,46 @@ function hideModal() {
                     
                      
                      index = 1;
+                     enigmeSuivant(1);
+                     modal.style.display ='none';
+                 });
+                 //Hide timeFig
+                 timeFig.style.display="none";
+            } 
+        }
+
+        if (index==2) {
+            if(valeurRep == reponse3.toLowerCase()){
+                //modal.style.display ='flex';
+                //boutonModal.innerHTML="Enigme suivante";
+
+                //inputs.blur();
+            numeroEnigme.text(enigmes[2].numero);
+            //setInterval(timelapse, 1000);
+            modal.style.display = "flex";
+            countdownTimer();    
+                timeFig.style.display="flex";
+                boutonModal.innerHTML = "Retour à l'ACCUEIL";
+                boutonModal.addEventListener('click',(event) => {
+                    
+                    modal.style.display ='none';
+                    window.location.href ="index.html";
+                });
+
+
+
+            }else{
+                modal.style.display ='flex';
+                boutonModal.innerHTML="Refaire l'énigme";
+                 //reponse incorrecte
+                 $('#titre-popup').text("Bravo! Votre réponse est incorrecte.");
+                 //Boutton Enigme à refaire
+                 //onclick="window.location.href='index.html'";
+ 
+                 boutonModal.addEventListener('click',(event) => {
+                    
+                     
+                     index = 2;
                      enigmeSuivant(index);
                      modal.style.display ='none';
                  });
@@ -233,13 +290,13 @@ function hideModal() {
             countdownTimer();
         }
 
-      }
+      
       
 
       
 
 
-
+      //Compte à rebours 
       function countdownTimer() {
         var countdownElement = document.getElementById("countdown");
         var endDate = new Date("2023-07-08"); // Date spécifiée (AAAA-MM-JJ)
@@ -250,10 +307,13 @@ function hideModal() {
           var timeDifference = endDate - currentDate;
           
           if (timeDifference <= 0) {
+            //temps ecoulé
             clearInterval(countdownInterval);
-            countdownElement.textContent = "Le compte à rebours est terminé !";
+            //countdownElement.textContent = "Le compte à rebours est terminé !";
           } else {
-            var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            //var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+            //parse de temps
             var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);            

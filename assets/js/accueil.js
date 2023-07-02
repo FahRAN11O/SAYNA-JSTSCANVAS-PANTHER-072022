@@ -123,6 +123,23 @@ var div = document.getElementById('myDiv');
 
 let currentIndex = 0; 
 
+var formulaire = document.querySelector('.mon-formulaire');
+
+formulaire.addEventListener('submit', (event) => {
+  modal.style.display ='flex';
+  $('#titre-popup').text("Merci pour votre demande d'intervention!");
+  //Boutton Enigme suivant
+  boutonModal.innerHTML="Fermer";
+
+  //evenenement correspondant avec le bouton
+  boutonModal.addEventListener('click',(event) => {
+      modal.style.display ='none';      
+  })
+
+
+})
+
+
 
 nextSlide.addEventListener('click', () => {
     // pour les images
@@ -140,6 +157,7 @@ nextSlide.addEventListener('click', () => {
     // animation 
 });
 
+//Image slide automatique
 function slideAuto() {
   divImg1.setAttribute('src', personnages[currentIndex].image.src);
     divImg2.setAttribute('src', personnages[(currentIndex + 1) % personnages.length].image.src);
@@ -152,4 +170,7 @@ function slideAuto() {
     currentIndex = (currentIndex + 1) % personnages.length;
 }
 
+//Slide automatique /4s
 setInterval(slideAuto, 4000);
+
+

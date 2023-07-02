@@ -7,7 +7,7 @@ var modal = document.getElementById("myModal");
 modal.style.display = "none";
 }
 
-var vLine1 = document.querySelector('.vertical-line1');
+/*var vLine1 = document.querySelector('.vertical-line1');
 var vLine2 = document.querySelector('.vertical-line2');
 //vLine1.style.height = '0%';
 function startAnimation() {
@@ -17,7 +17,7 @@ function startAnimation() {
     vLine2.style.height = '19.1vw'; // Définir la hauteur souhaitée pour l'animation
   //});
 }
-startAnimation();
+startAnimation();*/
 
 
 

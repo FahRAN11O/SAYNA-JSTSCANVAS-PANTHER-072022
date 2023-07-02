@@ -230,7 +230,7 @@
             <div class="formulaire">
                 <p>Besoin de l’intervention du Wakanda ?</p>
                 <h2>Contactez nous !</h2>          
-                <form action="">
+                <form action="" class="mon-formulaire">
                     <input type="text" id="input1" placeholder="Nom" required>
                     <input type="email" id="input2" placeholder="Email" required>
                     <textarea name="" id="" style="height: 9vw;" placeholder="Message" required></textarea>
@@ -279,6 +279,26 @@
     </footer>    
     
     <!-- Modal -->
+    <!-- modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <!--<span class="close" onclick="hideModal()">&times;</span>-->
+            <h4 id="titre-popup">TON INITIATION EST TERMINEE!</h4>
+            <div class="btn-modal">
+                <button id="btn-retour">REVENIR A L'ACCUEIL</button>
+            </div>
+            <div class="fig-time">
+                <div><img src="./assets/images/Enigme/figma_logo.svg" alt=""></div>
+                <div class="times">
+                    <p>COMING SOON...</p>
+                    <p id="timeout"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/enigme.js"></script>
+</body>
+</html>
     
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/accueil.js"></script>
