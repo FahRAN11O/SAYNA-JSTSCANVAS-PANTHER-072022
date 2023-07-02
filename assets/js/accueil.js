@@ -112,9 +112,12 @@ let nextSlide = document.getElementById('nextSlide'); //bouton suivant
 let divImg1 = document.getElementById('divImg1'); 
 let divImg2 = document.getElementById('divImg2');
 let divImg3 = document.getElementById('divImg3');
+let bio1 = document.getElementById('bio1');
+let bio2 = document.getElementById('bio2');
 
 let divTitle1 = document.getElementById('divTitle1');
 let divTitle2 = document.getElementById('divTitle2');
+
 
 var div = document.getElementById('myDiv');
 
@@ -130,7 +133,23 @@ nextSlide.addEventListener('click', () => {
     // pour le texte
     divTitle1.innerHTML = personnages[currentIndex].title;
     divTitle2.innerHTML = personnages[(currentIndex+ 1) % personnages.length].title;
+    bio1.innerHTML = personnages[currentIndex].text;
+    bio2.innerHTML = personnages[(currentIndex+ 1) % personnages.length].text;
     currentIndex = (currentIndex + 1) % personnages.length;
 
     // animation 
 });
+
+function slideAuto() {
+  divImg1.setAttribute('src', personnages[currentIndex].image.src);
+    divImg2.setAttribute('src', personnages[(currentIndex + 1) % personnages.length].image.src);
+    divImg3.setAttribute('src', personnages[(currentIndex + 2) % personnages.length].image.src);
+    // pour le texte
+    divTitle1.innerHTML = personnages[currentIndex].title;
+    divTitle2.innerHTML = personnages[(currentIndex+ 1) % personnages.length].title;
+    bio1.innerHTML = personnages[currentIndex].text;
+    bio2.innerHTML = personnages[(currentIndex+ 1) % personnages.length].text;
+    currentIndex = (currentIndex + 1) % personnages.length;
+}
+
+setInterval(slideAuto, 4000);

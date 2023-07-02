@@ -28,7 +28,7 @@
         "description": "Prouve ton talent d'espion et déchiffre cette réplique d’Okoyé écrite en Wakandais,<br> et apprend par la même occasion la première valeur d’une Dora Milaje ",
         "titre_note":"Voici la transicription de l’alphabet",
         "note": "<span>A</span> = A ; <span>B</span> = b ; <span>C</span> = c ; <span>D</span> = d ; <span>E</span> = e ; <span>F</span> = f ; <span>G</span> = g ; <span>H</span> = h ; <span>I</span> = i ; <span>J</span> = j ; <span>K</span> = k ; <span>L</span> = l ; <span>M</span> = m ; <span>N</span> = n ; <span>O</span> = o ; <span>P</span> = p ; <span>Q</span> = q ; <span>R</span> = r ; <span>S</span> = s ; <span>T</span> = t ;<span>U</span> = u ; <span>W</span> = w ; <span>X</span> = x ; <span>Y</span> = y ; <span>Z</span> = z",
-        "enigme": "\"SI JE SUIS FIDELE C’EST <br>A CE TRONE PEU IMPORTE QUI<br> MONTE DESSU\""
+        "enigme": "\"SI JE SUIS FIDELE C’EST <br>A CE TRONE PEU IMPORTE QUI<br> MONTE DESSUS\""
       },
       {
         "numero": 2,
@@ -49,8 +49,10 @@
       }
     ]
 
+const reponse1 = "SI JE SUIS FIDELE C’EST A CE TRONE PEU IMPORTE QUI MONTE DESSUS";
+const reponse3="LE ROI LION";
 
-let index = 1;
+let index = 0;
 var numeroEnigme = $('#numero-enigmes');
 var descriptionEnigme = $('#description-enigme');
 var contenuEnigme = $('#contenu-enigme');
@@ -65,17 +67,15 @@ contenuNote.html(enigmes[0].note);
 console.log(enigmes[0].numero);
 
 
-// 
+
 let send = document.getElementById('send');
 let result = document.getElementById('result');
 //const response = result.querySelector('#response').value.toLowerCase().trim();
-var responses = $('#response').val();
-let currentIndex = 0; 
+var responses = document.getElementById('response');
+let currentIndex = 0;
 
 send.addEventListener('click', () => {
-    
-    
-    
+
 });
 
 
@@ -125,11 +125,14 @@ function hideModal() {
     
     const form = document.querySelector('form');
     const modal = document.querySelector(".modal");
+    const boutonModal = document.getElementById('btn-retour');
     
+    var timeFig = document.querySelector('.fig-time');
+
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       console.log("Response Premier"+$('#response').val().toLowerCase());
-        
+    var valeurRep =$('#response').val().toLowerCase();        
 
         $('#enigme-normal').css('font-family','Arial,sans-serif');
 
@@ -145,135 +148,124 @@ function hideModal() {
         console.log(enigmes[index].numero);
 
         
+
+        if(index==0){
+            console.log("rep1="+reponse1.toLowerCase());
+            if(valeurRep == reponse1.trim().toLowerCase()){
+                //Reponse Correcte
+                modal.style.display ='flex';
+                $('#titre-popup').text("Bravo! Votre réponse est correcte.");
+                //Boutton Enigme suivant
+                //onclick="window.location.href='index.html'";
+                boutonModal.innerHTML="Enigme suivante";
+                boutonModal.addEventListener('click',(event) => {
+                    
+                    
+                    index = 1;
+                    enigmeSuivant(index);
+                    modal.style.display ='none';
+                    
+                })
+                //Hide timeFig
+                timeFig.style.display="none";
+            }else{
+                console.log("input rep1:"+valeurRep);
+                modal.style.display ='flex';
+                 //reponse incorrecte
+                 $('#titre-popup').text("Desolé! Votre réponse est incorrecte.");
+                 //Boutton Enigme à refaire
+                 //onclick="window.location.href='index.html'";
+                 boutonModal.innerHTML="Refaire l'enigme";
+                 boutonModal.addEventListener('click',(event) => {
+                    
+                     
+                     index = index;
+                     enigmeSuivant(index);
+                     modal.style.display ='none';
+                 });
+                 //Hide timeFig
+                 timeFig.style.display="none";
+            }
+        }
+         if (index==1) {
+            if(valeurRep == decodedMessage.toLowerCase()){
+                modal.style.display ='flex';
+                boutonModal.innerHTML="Enigme suivante";
+                //Reponse Correcte
+                $('#titre-popup').text("Bravo! Votre réponse est correcte.");
+                //Boutton Enigme suivant
+                boutonModal.addEventListener('click',(event) => {
+                    
+                    
+                    index = 2;
+                    enigmeSuivant(index);
+                    modal.style.display ='none';
+                })
+                //Hide timeFig
+                timeFig.style.display="none";
+            }else{
+                modal.style.display ='flex';
+                boutonModal.innerHTML="Refaire l'énigme";
+                 //reponse incorrecte
+                 $('#titre-popup').text("Bravo! Votre réponse est incorrecte.");
+                 //Boutton Enigme à refaire
+                 //onclick="window.location.href='index.html'";
+ 
+                 boutonModal.addEventListener('click',(event) => {
+                    
+                     
+                     index = 1;
+                     enigmeSuivant(index);
+                     modal.style.display ='none';
+                 });
+                 //Hide timeFig
+                 timeFig.style.display="none";
+            } 
+        }
+
         
+
         if(index>2){
             //inputs.blur();
             numeroEnigme.text(enigmes[2].numero);
-            setInterval(timelapse, 1000);
+            //setInterval(timelapse, 1000);
+            modal.style.display = "flex";
+            countdownTimer();
         }
 
-      }
-      index = index+1;
-
-      secTemps = 40;
-      function timelapse(){
-        modal.style.display = "flex";
-        if(secTemps>0){
-            $('#timeout').text(secTemps-1); 
-            secTemps = secTemps-1;
-            if(secTemps<10){
-                $('#timeout').text("0"+secTemps);
-            }   
-        }else{
-            window.location.href = "./index.html";
-            console.log("END OF TIME");
-            modal.style.display = "none";
-        }
       }
       
 
+      
+
+
+
+      function countdownTimer() {
+        var countdownElement = document.getElementById("countdown");
+        var endDate = new Date("2023-07-08"); // Date spécifiée (AAAA-MM-JJ)
+        //$('#timeout').html(hours+":"+minutes+":"+seconds);
+       
+        function updateCountdown() {
+          var currentDate = new Date();
+          var timeDifference = endDate - currentDate;
+          
+          if (timeDifference <= 0) {
+            clearInterval(countdownInterval);
+            countdownElement.textContent = "Le compte à rebours est terminé !";
+          } else {
+            var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);            
+            $('#timeout').html(hours+":"+minutes+":"+seconds);
+            console.log(hours+":"+minutes+":"+seconds);
+        }
+        }       
+        updateCountdown();
+        var countdownInterval = setInterval(updateCountdown, 1000);
+      }
 
     });
 
 
 
-/*
-    //API
-    $.ajax({
-        url: '.assets/reponse_api.json',
-        datatype: 'json',
-        success: function(questions) {
-            console.log("arriver au Json");
-            let index = 0, point = 0; 
-            let total = questions.length;
-
-            $('#total').text(total); 
-            setForm(questions[index].question, questions[index].response, 1); 
-
-            // Soumission des réponses
-            $('#formulaire').submit(function(e) {
-                e.preventDefault();
-
-                let chooseResponse = isChooseResponse(questions, index);
-                let isChoose = chooseResponse[0];
-                let userResponse = chooseResponse[1];
-
-                // Changer "question suivante" en "voir mon résultat" 
-                if($('#index').text()==total-1){
-                    $('#btn-next').val("Voir mon résultat");
-                }
-                
-                if (index < (total - 1)) {
-
-                    if (isChoose) { 
-                        $('#quiz-container').slideUp(1000).slideDown(1000);
-                        index++; 
-
-                        setTimeout(() => {
-                            if (index < total) {
-                                setForm(questions[index].question, questions[index].response, (index + 1)); 
-                            }
-                        }, 200);
-                        point = userResponse === true ? (point + 1) : point; 
-                        userResponse = "false"; 
-                        console.log(point);
-                    }
-                } else {
-
-                    // gestion des réponses
-                    if (isChoose) {
-                        console.log(userResponse);
-                        point = userResponse === true ? (point + 1) : point; 
-                        console.log(point);
-                        if (point <= (total / 3)) {
-                            $('#titre').text("0" + point + "/" + total + " c'est pas tout à fait ça...");
-                            $('#appreciation').text("Oula ! Heureusement que le Riddler est sous verrous... Il faut que vous vous repassiez les films, cette fois en enlevant peut-être le masque qui vous a bloqué la vue! Aller, rien n'est perdu !");
-                        } else if (point <= (total / 2)) {
-                            $('#titre').text(point + "/" + total + " pas mal !");
-                            $('#appreciation').text("Encore un peu d'entraînement avec le Chevalier Noir vous serait bénéfique, mais vous pouvez marcher la tête haute, vos connaissances sont là. A vous de les consolider, foncez Gotham est votre de chasse !");
-                        } else {
-                            $('#titre').text(point + "/" + total + " bravo !");
-                            $('#appreciation').text("Vous êtes véritablement un super fan de l'univers de Batman ! Comics, films, rien ne vous échappe. Bruce Wayne a de quoi être fier, Gotham est en paix et Batman peut prendre sa retraite, vous veillez aux grains");
-                        }
-                        $('#popup-result').css("display", "flex");
-                    }
-                }
-            }); 
-        },
-        error: function(questions) {
-            console.log(questions);
-        },
-    });
-
-    // Fonction de verification s'il y a choix de réponse 
-
-    function isChooseResponse(questions, index) {
-        let userResponse = false; 
-        // Vérification si une réponse est cochée
-        for (let i = 0; i < questions[index].response.length; i++) {
-            if ($('#checkbox' + i).is(":checked")) {
-                
-                userResponse = questions[index].response[i].isGood;
-                console.log(questions[index].response[i].isGood);
-            }
-        }
-        return [true, userResponse];
-    }
-
-    //altérnation du quizz
-    function setForm(question, response, nbreQuiz) {
-        $('#img-illustrate').attr("src", "Assets/img/Illustrations_game/Batgame_" + (2 + nbreQuiz) + ".png");
-        $('#index').text(nbreQuiz);
-        $('#quiz-question').empty();
-        $('#quiz-question').append("<p class='question' id='question'></p>");
-        $('#question').text(question);
-
-        for (let i = 0; i < response.length; i++) {
-            $('#quiz-question').append("<label for='checkbox" + i + "' class='response' id ='" + i + "'></label>");
-            $('#' + i).append("<input type='checkbox' name='choix' id='checkbox" + i + "'>");
-            $('#' + i).append("<p id='response" + i + "' > " + response[i].text + " </p>");
-        }
-        $('#quiz-question').append("<span id='error-message'></span>");
-    }
-
-});*/

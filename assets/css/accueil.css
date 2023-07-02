@@ -24,12 +24,17 @@
 
 .vertical-line1 {
     border-left: 3px solid var(--purple-color);
-    min-height: 29vw;
+    /*min-height: 29vw;*/
+    min-height: 0%;
+    /*height: 0;*/
+    transition: height 2s ease;
 }
 
 .vertical-line2 {
     border-left: 3px solid var(--purple-color); 
-    height: 19.1vw;
+    /*height: 19.1vw;*/
+    min-height: 0%;
+    transition: height 2s ease;
 }
 
 .vertical-icon {
